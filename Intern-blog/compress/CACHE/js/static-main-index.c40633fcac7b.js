@@ -1,0 +1,1 @@
+new Vue({el:'#app',delimiters:['[[',']]'],vuetify:new Vuetify(),data(){return{isDark:false,}},methods:{ToggleTheme:function(){this.$vuetify.theme.dark=!this.$vuetify.theme.dark;this.isDark=!this.isDark;},}});

@@ -1,0 +1,114 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html>
+<head>
+
+  {% load static %}
+  {% load compress %}
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Exo:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+
+  {% compress css file static-uidesign-styles %}
+  <link href="{% static 'styles/vuetify.min.css' %}" rel="stylesheet">
+  {% endcompress %}
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <meta http-equiv="cache-control" content="public"/>
+  <style>
+    .content p {
+      font-size: 18px;
+      margin:  30px;
+    }
+
+    .content img {
+      display: block;
+      margin-top: 90px;
+      margin-bottom:  90px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+  </style>
+
+  {% compress css file static-font-styles %}
+    <link href="{% static 'styles/core.styles.css' %}" rel="stylesheet">
+    <style>
+        @font-face {
+          font-family: optimistic;
+          src: url({% static 'fonts/optimistic.woff' %});
+        }
+        .highlight-animation {
+        display: inline-block;
+        position: relative;
+        }
+        .highlight-animation:after {    
+          content: '';
+          position: absolute;
+          width: 90%;
+          transform: scaleX(0);
+          height: 2px;
+          bottom: 10px;
+          left: 10px;
+          background-color: #0087ca;
+          transform-origin: bottom right;
+          transition: transform 0.25s ease-out;
+        }
+        .highlight-animation:hover:after { 
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+
+        .video-container {
+            position: relative;
+        }
+
+        .video-container video {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          object-fit: cover;
+          z-index: 0;
+        }
+
+        .video-container .caption {
+          z-index: 1;
+          position: absolute;
+          bottom: 20px;
+          text-align: left;
+          padding: 10px;
+        }
+    </style>
+  {% endcompress %}
+
+  {% compress js file static-ajax-packed %}
+    <script src="{% static 'js/__Static-Ajax/htmx-jquery.js' %}"></script>
+  {% endcompress %}
+
+</head>
+<body data-csrf="{{ csrf_token }}" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+  <div id="app">
+    <v-app>
+
+      {% block VMainManupulation %}
+      <v-main class="ma-0 pa-0 justify-center">
+      {% endblock %}
+
+        {% block StaticContent %}
+        {% endblock %}
+
+      </v-main>
+    </v-app>
+  </div>
+
+  {% compress js file static-vue-packed %}
+    <script src="{% static 'js/__Static-Vue/vue-vuetify.js' %}"></script>
+  {% endcompress %}
+
+  {% block StaticJavascript %}
+  {% endblock %}
+
+  </body>
+</html>
+{% endspaceless %}

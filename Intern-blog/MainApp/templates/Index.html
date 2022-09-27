@@ -1,0 +1,133 @@
+{% extends 'Static_Public_Core.html' %}
+{% load static %}
+{% load compress %}
+
+      {% block StaticContent %}
+
+        <v-app-bar flat fixed elevation="0" height="80px" :color="isDark">
+          <v-card tile flat class="ma-0 pa-0" width="100vw">
+            <v-list-item class="ma-0 pa-0">
+              <v-card tile flat height="40" width="120" color="transparent">
+                <v-img contain src="{% static 'static/home_page/farzi-logo.png' %}" height="40"></v-img>
+              </v-card>
+
+              <v-list-item class="hidden-sm-and-down ml-8">
+                <a class="font-weight-regular mx-2 text-decoration-none black--text" href="{% url 'Internship:About' %}" style="font-family: optimistic; font-size: 18px;">About</a>
+                <a class="font-weight-regular mx-2 text-decoration-none black--text" href="{% url 'Internship:Index' %}" style="font-family: optimistic; font-size: 18px;">Blogs</a>
+              </v-list-item>
+
+              <v-spacer></v-spacer>
+              <v-btn icon @click="ToggleTheme()"><v-icon>mdi-weather-sunny</v-icon></v-btn><v-btn icon class="hidden-md-and-up"><v-icon>mdi-equal</v-icon></v-btn>
+            </v-list-item>
+          </v-card>
+        </v-app-bar>
+        <v-card tile flat height="80px"></v-card>
+
+        {% for blog in blogs %}
+
+          <v-card tile flat>
+            <v-list-item class="ma-8">
+              <v-img src="{{ blog.thumbnail.url }}" contain max-width="40vw"></v-img>
+              <v-card tile flat class="mx-4">
+                <a class="my-0 hidden-sm-and-down highlight-animation text-decoration-none mx-4" href="{% url 'Internship:ViewBlog' blog.primaryKey %}" style="font-family: optimistic; font-size: 25px;">
+                  {{ blog.title }}
+                </a>
+                <v-card-title class="my-0 py-0" style="font-family: optimistic; font-size: 18px;">
+                  {{ blog.content|truncatechars:140|safe }}</p>
+                </v-card-title>
+                <v-card-title class="my-0 py-0" style="font-family: optimistic; font-size: 15px;">
+                  <v-spacer></v-spacer> Posted - {{ blog.dateCreated.date|date:"D d M y" }}
+                </v-card-title>
+              </v-card>
+            </v-list-item>
+          </v-card>
+
+          <v-divider class="ma-10"></v-divider>
+
+        {% endfor %}
+        
+
+
+    <v-card tile flat class="py-2 pt-6 hidden-sm-and-down" color="#F1F4F7">
+      <v-list-item justify="top">
+
+        <v-row align="start" no-gutters style="height: 150px;">
+        <v-col>
+          <v-card tile flat color="transparent" style="font-family: optimistic; font-size: 14px;" width="120px">
+            <v-img contain src="{% static 'static/home_page/farzi-logo.png' %}" height="40"></v-img>
+          </v-card>
+        </v-col>
+
+        <v-spacer></v-spacer>
+
+
+        <v-row align="start" no-gutters style="height: 150px;">
+        <v-col>
+          <v-card tile flat class="mx-4" color="transparent" style="font-family: optimistic; font-size: 18px;">
+          Resources link<br><br>
+          <a class="ma-0 pa-0 my-2 text-decoration-none" href="{% url 'Internship:About' %}" style="font-size: 15px;">About</a><br>
+          <a class="ma-0 pa-0 my-2 text-decoration-none" href="{% url 'Internship:Index' %}" style="font-size: 15px;">Blogs</a><br>
+        </v-card>
+        </v-col>
+
+      </v-row>
+
+      </v-list-item>
+
+      <v-list-item class="my-0 py-4 caption">© 2022 Farzi Engineer <v-spacer></v-spacer> Language - en-IN</v-list-item>
+    </v-card>
+
+    <v-card tile flat class="py-2 pt-6 hidden-md-and-up" color="#F1F4F7">
+
+
+      <v-col>
+        <v-card tile flat color="transparent" style="font-family: optimistic; font-size: 14px;" width="120px">
+          <v-img contain src="{% static 'static/home_page/Sykaa-logo-transparent.png' %}" height="40"></v-img>
+        </v-card>
+      </v-col>
+
+
+      <v-expansion-panels accordion flat>
+      <v-expansion-panel tile flat>
+        <v-expansion-panel-header color="#F1F4F7">Resources link</v-expansion-panel-header>
+        <v-expansion-panel-content color="#F1F4F7">
+          <a class="ma-0 pa-0 my-2 text-decoration-none" href="{% url 'Internship:About' %}" style="font-size: 15px;">About</a><br>
+          <a class="ma-0 pa-0 my-2 text-decoration-none" href="{% url 'Internship:Index' %}" style="font-size: 15px;">Blogs</a><br>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
+
+    <v-list-item class="my-0 py-4 caption">© 2022 Farzi Engineer <v-spacer></v-spacer> Language - en-IN</v-list-item>
+
+    </v-card>
+
+
+    {% endblock %}
+
+  {% block StaticJavascript %}
+
+  {% compress js file static-main-index %}
+    <script>
+      new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#app',
+        vuetify: new Vuetify(),
+        data () { 
+              return {
+                isDark: "white",
+              }
+            },
+        methods: {
+                   ToggleTheme: function () {
+                      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+                      if (this.isDark == "white") {
+                        this.isDark = "black";
+                      } else {
+                        this.isDark = "white";
+                      }
+                   },
+           }
+      })
+    </script>
+  {% endcompress %}
+ {% endblock %}
