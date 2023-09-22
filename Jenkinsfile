@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('First step') {
             steps {
-                echo 'Run the static analysis to the code' 
+                echo 'Executing the first step.' 
             }
         }
         stage('Compile') {
             steps {
-                echo 'Compile the source code' 
+                echo 'Compile the source code.' 
             }
         }
         stage('Deploy file') {
