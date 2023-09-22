@@ -6,7 +6,7 @@ pipeline {
                 echo 'Executing the first step.' 
             }
         }
-        stage('Compile') {
+        stage('Compile step') {
             steps {
                 echo 'Compile the source code.' 
             }
