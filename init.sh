@@ -8,4 +8,5 @@ nohup python3 manage.py runserver &
 
 rm -f /etc/nginx/sites-enabled/default
 cp /blog/configuration/nginx.conf /etc/nginx/sites-enabled/
+sudo nginx -t
 sudo systemctl restart nginx
