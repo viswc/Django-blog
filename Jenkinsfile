@@ -15,6 +15,7 @@ pipeline {
             steps {
                 sh '''
                     sudo su
+                    sudo rm -rf /blog
                     sudo git clone https://github.com/viswc/Django-blog.git /blog
                     sudo chmod +x /blog/init.sh
                     sudo /blog/init.sh
