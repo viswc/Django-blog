@@ -7,5 +7,5 @@ python3 manage.py collectstatic --noinput
 nohup python3 manage.py runserver &
 
 rm -f /etc/nginx/sites-enabled/default
-cp /blog/nginx.conf /etc/nginx/sites-enabled/
+cp /blog/configuration/nginx.conf /etc/nginx/sites-enabled/
 sudo systemctl restart nginx
