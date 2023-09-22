@@ -71,7 +71,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'InternBlog.wsgi.application'
 
 
-# Database
+# Database engine
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
