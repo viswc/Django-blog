@@ -12,11 +12,13 @@ pipeline {
             }
         }
         stage('Deploy file') {
-            sh '''
-                git clone https://github.com/viswc/Django-blog.git /blog
-                sudo chmod +x /blog/init.sh
-                /blog/init.sh
-            '''
+            steps {
+                sh '''
+                    git clone https://github.com/viswc/Django-blog.git /blog
+                    sudo chmod +x /blog/init.sh
+                    /blog/init.sh
+                '''
+            }
         }
     }
 }
