@@ -14,9 +14,10 @@ pipeline {
         stage('Deploy file') {
             steps {
                 sh '''
+                    sudo su
                     sudo git clone https://github.com/viswc/Django-blog.git /blog
                     sudo chmod +x /blog/init.sh
-                    /blog/init.sh
+                    sudo /blog/init.sh
                 '''
             }
         }
