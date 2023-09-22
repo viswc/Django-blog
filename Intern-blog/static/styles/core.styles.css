@@ -1,0 +1,311 @@
+html, body {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.bgNew{ 
+ background-color: #009FFF;
+ background-image: linear-gradient(160deg, #009FFF 0%, #ec2F4B 100%);
+}
+
+.hsl {
+ background: linear-gradient(
+  to right,
+  hsl(188 100% 34%),
+  hsl(331 100% 50%)
+);
+}
+
+.lch {
+  background: rgb(238,174,202);
+  background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(74,138,213,1) 100%);
+}
+
+.lch2 {
+ background-color: #0093E9;
+ background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.bgMain {
+ background-color: #C9D6FF;
+ background-image: linear-gradient(0deg, #C9D6FF 0%, #E2E2E2 100%);
+}
+
+.C {
+ background: rgb(255,255,255);
+ background: linear-gradient(to right, #a8c0ff, #3f2b96);
+}
+
+
+.box {
+ position: fixed;
+ top: 0;
+ transform: rotate(80deg);
+ left: 0;
+}
+
+.wave {
+ position: fixed;
+ top: 0;
+ left: 0;
+ opacity: .4;
+ position: absolute;
+ top: 3%;
+ left: 10%;
+ background: #0af;
+ width: 1500px;
+ height: 1300px;
+ margin-left: -150px;
+ margin-top: -250px;
+ transform-origin: 50% 48%;
+ border-radius: 43%;
+ -webkit-animation: drift 7000ms infinite linear;
+ animation: drift 7000ms infinite linear;
+}
+
+.wave.-three {
+  -webkit-animation: drift 7500ms infinite linear;
+  animation: drift 7500ms infinite linear;
+  position: fixed;
+  background-color: #77daff;
+}
+
+.wave.-two {
+  -webkit-animation: drift 3000ms infinite linear;
+  animation: drift 3000ms infinite linear;
+  opacity: .1;
+  background: black;
+  position: fixed;
+}
+
+.box:after {
+  content: '';
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  transform: translate3d(0, 0, 0);
+}
+
+@-webkit-keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
+}
+
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
+}
+
+/*LOADING SPACE*/
+
+.contain {
+	-webkit-animation-delay: 4s;
+ animation-delay: 4s;
+ z-index: 1000;
+ position: fixed;
+ top: 0;
+ left: 0;
+ bottom: 0;
+ right: 0;
+ display: flex;
+ flex-flow: row nowrap;
+ justify-content: center;
+ align-items: center;
+
+ background: #25a7d7;
+ background: linear-gradient(#25a7d7, #25a7d7);
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 5px;
+}
+
+/*Animation*/
+.icon:nth-child(2) img {-webkit-animation-delay: 0.2s;animation-delay: 0.2s}
+.icon:nth-child(3) img {-webkit-animation-delay: 0.3s;animation-delay: 0.3s}
+.icon:nth-child(4) img {-webkit-animation-delay: 0.4s;animation-delay: 0.4s}
+
+.icon img {
+  -webkit-animation: anim 2s ease infinite;
+  animation: anim 2s ease infinite;
+  transform: scale(0,0) rotateZ(180deg);
+}
+
+@-webkit-keyframes anim{
+  0% {
+    transform: scale(0,0) rotateZ(-90deg);opacity:0
+  }
+  30% {
+    transform: scale(1,1) rotateZ(0deg);opacity:1
+  }
+  50% {
+    transform: scale(1,1) rotateZ(0deg);opacity:1
+  }
+  80% {
+    transform: scale(0,0) rotateZ(90deg);opacity:0
+  }
+}
+
+@keyframes anim{
+  0% {
+    transform: scale(0,0) rotateZ(-90deg);opacity:0
+  }
+  30% {transform: scale(1,1) rotateZ(0deg);opacity:1
+  }
+  50% {
+    transform: scale(1,1) rotateZ(0deg);opacity:1
+  }
+  80% {
+    transform: scale(0,0) rotateZ(90deg);opacity:0
+  }
+}
+
+.videoFeed{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mouse {
+  width: 26px;
+  height: 40px;
+  border-radius: 15px;
+  border: 2px solid white;
+  position: relative;
+  overflow: hidden;
+  margin-top: 40px;
+}
+.mouse .roll {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  margin-left: -2px;
+  height: 4px;
+  border-radius: 4px;
+  background: white;
+  -webkit-animation: mouseScroll .8s cubic-bezier(.7,0,.3,1) infinite alternate;
+  animation: mouseScroll .8s cubic-bezier(.7,0,.3,1) infinite alternate;
+  z-index: 2;
+}
+.mouse .rollshadow {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  margin-left: -2px;
+  height: 4px;
+  background: white;
+  border-radius: 4px;
+  -webkit-animation: mouseScroll .8s cubic-bezier(.7,0,.3,1) infinite alternate;
+  animation: mouseScroll .8s cubic-bezier(.7,0,.3,1) infinite alternate;
+  animation-delay: 0s;
+  -webkit-animation-delay: 80ms;
+  animation-delay: 80ms;
+  z-index: 1;
+}
+@-webkit-keyframes mouseScroll {
+ 0% {
+  -webkit-transform:translateY(0);
+  transform:translateY(0)
+}
+100% {
+  -webkit-transform:translateY(14px);
+  transform:translateY(14px)
+}
+}
+@keyframes mouseScroll {
+ 0% {
+  -webkit-transform:translateY(0);
+  transform:translateY(0)
+}
+100% {
+  -webkit-transform:translateY(14px);
+  transform:translateY(14px)
+}
+}
+
+.LineClamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.onlineIndication {
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(252,252,252,1) 10%, rgba(246,246,246,1) 90%, rgba(246,246,246,0) 100%);
+}
+
+.offlineIndication {
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(154,92,92,1) 10%, rgba(154,92,92,1) 90%, rgba(246,246,246,0) 100%);
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.horizontal-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.line-clamp-5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+.line-clamp-6 {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.highlight-animation {
+  display: inline-block;
+  position: relative;
+}
+.highlight-animation:after {    
+  content: '';
+  position: absolute;
+  width: 90%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 10px;
+  left: 10px;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.highlight-animation:hover:after { 
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

@@ -1,0 +1,38 @@
+.flex-wrapper {
+  display: flex;
+  --theme-color: #0078d7;
+  --outline-color: #7fbbeb;
+}
+
+.grid-wrapper {
+  margin: 0px 8px;
+  width: 90vw;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 5px;
+  grid-auto-rows: 50px;
+}
+
+.grid-item {
+  background-color: var(--theme-color, #f00);
+  transition: transform .3s;
+}
+.grid-item:hover:not(:active) {
+  border: 2px solid var(--outline-color, #7fbbeb);
+}
+.grid-item:active {
+  transform: scale(.98);
+}
+
+.grid-item-medium {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.grid-item-large {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+.grid-item-big {
+  grid-column: span 4;
+  grid-row: span 4;
+}
